@@ -14,7 +14,6 @@ public class RandomValues {
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final long startDate = LocalDate.of(2021, 1, 1).toEpochDay();
     private final long endDate = LocalDate.of(2021, 12, 31).toEpochDay();
-    private static final BigDecimal max = new BigDecimal(999);
 
     public List<String> ListRandomName() {
         char[] string = new char[8];
