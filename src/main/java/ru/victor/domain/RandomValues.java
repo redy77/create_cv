@@ -18,7 +18,6 @@ public class RandomValues {
     public List<String> ListRandomName() {
         char[] string = new char[8];
         return IntStream.rangeClosed(0, 1000)
-//                .parallel()
                 .mapToObj(s -> {
                     for (int i = 0; i < 8; i++) {
                         int random = ThreadLocalRandom
