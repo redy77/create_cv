@@ -3,6 +3,7 @@ package ru.victor.domain;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class CSVTask {
@@ -17,7 +18,9 @@ public class CSVTask {
     }
 
     private void createTask(BufferedWriter bufferedWriter) throws IOException, ExecutionException, InterruptedException {
-
+        List<String> listDate = random.randomDate(amount);
+        List<String> listDecimal = random.randomBigDecimal(amount);
+        List<String> listNames = random.ListRandomName();
         bufferedWriter.append(FILE_HEADER)
                 .append(NEW_LINE_SEPARATOR);
         for (int i = 1; i <= amount; i++) {
@@ -25,11 +28,11 @@ public class CSVTask {
                 bufferedWriter
                         .append(String.format("%08d\n", i))
                         .append(COMMA_DELIMITER)
-                        .append(random.randomName(i, random.ListRandomName()))
+                        .append(random.randomName(i, listNames))
                         .append(COMMA_DELIMITER)
-                        .append(random.randomBigDecimal(amount).get(i))
+                        .append(listDecimal.get(i))
                         .append(COMMA_DELIMITER)
-                        .append(random.randomDate(amount).get(i))
+                        .append(listDate.get(i))
                         .append(NEW_LINE_SEPARATOR);
 
             } catch (IOException e) {
